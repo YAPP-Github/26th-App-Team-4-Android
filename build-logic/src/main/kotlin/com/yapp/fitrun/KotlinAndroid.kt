@@ -32,7 +32,6 @@ internal fun Project.configureKotlinAndroid() {
             getByName("release") {
                 isMinifyEnabled = false
                 proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
                     "proguard-rules.pro"
                 )
             }
@@ -47,10 +46,6 @@ internal fun Project.configureKotlinAndroid() {
     configureKotlin()
 
     val libs = extensions.libs
-
-    dependencies {
-        add("coreLibraryDesugaring", libs.findLibrary("android.desugarJdkLibs").get())
-    }
 }
 
 internal fun Project.configureKotlin() {
