@@ -1,6 +1,7 @@
 plugins {
     `kotlin-dsl`
     `kotlin-dsl-precompiled-script-plugins`
+    alias(libs.plugins.gradle.dependency.handler.extensions)
 }
 
 dependencies {
@@ -20,6 +21,32 @@ gradlePlugin {
             id = "fitrun.kotlin.hilt"
             implementationClass = "com.yapp.fitrun.HiltKotlinPlugin"
         }
+        // Kotlin
+        register("kotlinLibrary") {
+            id = "fitrun.kotlin.library"
+            implementationClass = "KotlinLibraryConventionPlugin"
+        }
     }
 }
 
+
+repositories {
+    google()
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+dependencies {
+    compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
+
+}

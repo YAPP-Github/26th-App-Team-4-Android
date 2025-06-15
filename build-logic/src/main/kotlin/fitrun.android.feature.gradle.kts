@@ -22,9 +22,9 @@ configureHiltAndroid()
 dependencies {
     val libs = project.extensions.libs
     implementation(libs.findLibrary("hilt.navigation.compose").get())
-    implementation(libs.findLibrary("androidx.compose.navigation").get())
-    androidTestImplementation(libs.findLibrary("androidx.compose.navigation.test").get())
-
-    implementation(libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
-    implementation(libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
+    implementation(libs.findLibrary("androidx.lifecycle.viewModelCompose"))
+    implementation(libs.findLibrary("androidx.lifecycle.runtime.ktx"))
+    implementation(libs.findLibrary("androidx.lifecycle.runtimeCompose"))
+    implementation(libs.findLibrary("orbit.viewmodel").get())
+    implementation(libs.findLibrary("orbit.compose").get())
 }
